@@ -1,0 +1,13 @@
+\section{Rule-set RS-B3}
+Given an initial Query Tree Q, for all join nodes enable only $R_{1}$, $R_{2}$ and $R_{3}$.
+
+\begin{itemize}
+    \item $R_{1}$: Commutativity \\ $A \bowtie_{0} B \rightarrow B \bowtie_{1} A$ \\
+    Disable $R_{1}$,$R_{2}$,$R_{3}$ for application on new operator $\bowtie_{1}$
+    \item $R_{2}$: Right Associativity \\ $(A \bowtie_{0} B) \bowtie_{1} C \rightarrow A \bowtie_{2} (B \bowtie_{3} C)$ \\
+    If $R_{1}$ enabled, disable $R_{1}$,$R_{2}$ for application on new operator $\bowtie_{2}$. \\
+    Else disable $R_{2}$,$R_{3}$ for application on new operator $\bowtie_{2}$. Enable $R_{1}$ for $\bowtie_{2}$.
+    \item $R_{3}$: Left Associativity \\ $A \bowtie_{0} (B \bowtie_{1} C) \rightarrow (A \bowtie_{2} B) \bowtie_{3} C$ \\
+    If $R_{1}$ enabled, disable $R_{1}$,$R_{3}$ for application on new operator $\bowtie_{3}$. \\
+    Else disable $R_{2}$,$R_{3}$ for application on new operator $\bowtie_{3}$. Enable $R_{1}$ for $\bowtie_{3}$.
+\end{itemize}

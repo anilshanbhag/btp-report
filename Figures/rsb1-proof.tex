@@ -1,0 +1,60 @@
+%And then the actual code for creating the figure:
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\begin{document}
+
+% First, set the overall layout of the tree
+% You might need to play with these sizes to ensure nothing overlaps.
+\tikzstyle{level 1}=[level distance=1cm, sibling distance=2cm]
+\tikzstyle{level 2}=[level distance=1cm, sibling distance=2cm]
+\tikzstyle{level 3}=[level distance=1cm, sibling distance=2cm]
+\tikzstyle{level 4}=[level distance=1cm, sibling distance=2cm]
+\tikzstyle{level 5}=[level distance=1cm, sibling distance=2cm]
+\tikzstyle{level 6}=[level distance=1cm, sibling distance=2cm]
+\begin{tikzpicture}
+\node {$\bowtie$}
+    child{
+        node{$C_{m}$}
+        edge from parent
+        node[left]{}
+    }
+    child[dashed]{
+        node{$\bowtie$}
+        child[solid]{
+            node{$C_{2}$}
+            edge from parent
+            node[left]{}
+        }
+        child[solid]{
+            node{$\bowtie$}
+			child[solid]{
+                node{$C_{1}$}
+                edge from parent
+                node[left]{}
+            }
+            child[solid]{
+            		node{$\bowtie$}
+				child{
+                		node{$X$}
+                		edge from parent
+                		node[left]{}
+            		}
+            		child{
+            				node{$R_{k}$}
+                			edge from parent
+                			node[right]{}
+            		}
+            }            
+            edge from parent
+            node[right]{}
+        }
+        edge from parent
+        node[right]{}
+    };
+%Now I create the information set. Note that I utilize the names
+%that I had previously assigned to nodes in my graph
+%\draw [dashed](a)--(b);
+%\draw [dashed](b)--(c);
+\end{tikzpicture}
+\end{document}

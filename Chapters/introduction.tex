@@ -1,0 +1,23 @@
+\chapter{Introduction}
+
+For a DBMS that provides support for a declarative query
+language like SQL, the query optimizer is a crucial piece of software. The declarative nature of a query allows it to be translated into many equivalent evaluation plans. The process of choosing a suitable plan from all alternatives is known as query optimization. The basis of this choice are a cost model and statistics over the data. Essential for the costs of a plan is the execution order of join operations in its operator tree, since the runtime of plans with different join orders can vary by several orders of magnitude. 
+
+\section{Transformation-based Query Optimizers}
+Long ago, Ono and Lohman\cite{ono1990measuring} gave a lower bound of $O(3^n)$ with n the number of relations, on the complexity join enumeration, by counting how many join operators are considered in the bottom-up dynamic programming enumeration algorithm of System R and Starburst. Bottom-up dynamic programming and top-down memoization based join enumeration algorithms have been found which achieve this lower bound and hence are very efficient for join enumeration. However there is advantage to reordering other operators and choosing among the new alternatives based on cost estimation. DP based techniques have been extended to deal with other operators (eg: aggregations, outer joins), however there is no general technique for extension. For example, to deal with with sub-queries Seshadri et al suggested a clever iterative algorithm in which an extended bottom-up enumeration module is called many times - but we are forced beyond bottom-up framework. \\
+
+Rule-based query optimizers are extensible as they are described using a set of transformation rules. All possible rules are applied on each alternative until no new information is produced. However the trade-off of rule-based optimizers is efficiency.
+
+\section{The Search Space}
+An exhaustive search for an optimal solution over all possible operator trees is computationally expensive. To decrease complexity, the search space must be restricted. For the optimization problem discussed in this report, a well-accepted heuristic is applied: We consider all possible bushy join trees, but exclude cross products from the search, presuming that all considered queries span a connected query graph \cite{ono1990measuring}. Our goals are:
+\begin{itemize}
+	\item Complete space enumeration
+	\item Remain in the space of cross product free join trees
+	\item Avoid generation of duplicates
+\end{itemize}
+
+The goal is to enable cost-based selection of alternatives that are generated via transformation rules, while being as efficient as top-down join enumerator.
+ 
+\section{Organization of the Report}
+The rest of the report is organized as follows:
+In Chapter 2, we introduce general concepts in traditional query optimization. In Chapter 3, a literature survey of different join enumeration algorithms is presented. In Chapter 4, we prove the in-effectiveness of existing rule sets. In Chapter 5, we present a new rule set which improves on the drawbacks of existing rule sets. In Chapter 6, we present a new method for join enumeration in a rule-based setting. In Chapter 7, we look into possible future steps in this direction. Finally we conclude the report in Chapter 8.  

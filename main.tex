@@ -1,0 +1,41 @@
+\documentclass[a4paper, 12pt]{report}
+\usepackage[pdftex]{graphicx}
+\usepackage[autostyle]{csquotes}
+\usepackage[backend=bibtex,style=numeric,sorting=none]{biblatex}
+\usepackage{caption}
+\usepackage{subcaption} % for subfigure
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage{algpseudocode}
+\usepackage{amsthm} % for theorem
+\usepackage{algorithm}
+\addbibresource{bibliography}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[chapter] % reset theorem numbering for each chapter
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition} % definition numbers are dependent on theorem numbers
+\newtheorem{exmp}[thm]{Example} % same for example numbers
+
+\begin{document}
+\pagenumbering{roman}
+\include{cover}
+\include{abstract}
+\include{acknowledgements}
+\include{contents}
+\pagenumbering{arabic}
+\include{Chapters/introduction}
+\include{Chapters/chapter2}
+\include{Chapters/chapter3}
+\include{Chapters/chapter4}
+\include{Chapters/chapter5}
+\include{Chapters/chapter6}
+\include{Chapters/chapter7}
+\include{Chapters/conclusion}
+\pagenumbering{roman}
+\include{references}
+
+\end{document}

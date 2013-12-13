@@ -1,0 +1,13 @@
+\chapter{Future Work}
+Over the course of BTP, we have identified a number of promising areas related to query optimization in transformation-based query optimizers for future work :
+\begin{itemize}
+	\item \textbf{Memoization based Join Enumeration} : We plan to experiment with memoization-based join enumerator as a replacement for existing join enumeration rules (see Section \ref{topdownint}). The benefits and overheads need to be analysed.
+	\item \textbf{Throw in more join operators} : We plan to analyse effect of adding in more operators like left outer join, full outer join, anti join, semi join and group joins into the bucket of join operators. Even with this extended family of join operators we aim at exploring the space of all valid plans without introducing cross products. 
+	\item \textbf{Sampling the Search Space} : The search space grows exponentially with respect to number of relations. The idea is to generate a sample of the search space and from this sample give the optimal plan. Galindo-Legaria et al. \cite{galindo1995uniformly} presented a method for uniform random sample of all join orders. The problems we plan to tackle :
+	\begin{itemize}
+		\item Random sample of space of bushy join trees
+		\item Extending to generating random sample of search space even in presence of other operators
+	\end{itemize}
+	\item \textbf{Prioritized Search Space Exploration} : Currently the search space is explored depth first. This approach is simple, however has inherent problem that we don't assign priority for traversal of children. Pruning depends on the order of exploration and hence it might be beneficial to assign 'priority' to each of the children and choose order based on this. Some ideas in \cite{fender2012effective}.	
+	\item \textbf{Extending to Cascades and Columbia}: The Cascades optimizer generator overcomes many of the shortcomings of Volcano. We wish to check the applicability of things discussed in this report for use in Cascades style framework.	
+\end{itemize}
